@@ -8,8 +8,6 @@ package com.view;
 import com.controller.IngredientController;
 import com.controller.RecIngredientsController;
 import com.modle.IngredientModle;
-import com.sun.corba.se.spi.ior.iiop.AlternateIIOPAddressComponent;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -39,14 +37,15 @@ public class HomeView extends javax.swing.JFrame {
     String searchIngreName, searchIngreCategory = null;
     String unitsArray[] = {"teaspoon", "tablespoon", "fluid ounce", "gill", "cup", "pint", "quart", "gallon", "ml", "l", "pound", "ounce", "mg", "g", "kg"};
     ArrayList<RecIngredientsModle> recIngreList = null;
+
     public HomeView() {
 
         initComponents();
         ingreDefTablModle = (DefaultTableModel) tableIngreSearch.getModel();
         recDefaultTableModel = (DefaultTableModel) tableRecSearch.getModel();
-        recIngredientsTableModle = (DefaultTableModel)tableRecIngredients.getModel();
-        recDetailsEditIngreModle = (DefaultTableModel)tableRecEditDetailsSelectedIngre.getModel();
-        recDetailsEditNotIncluModle = (DefaultTableModel)tableRecDetailsNotIncluIngre.getModel();
+        recIngredientsTableModle = (DefaultTableModel) tableRecIngredients.getModel();
+        recDetailsEditIngreModle = (DefaultTableModel) tableRecEditDetailsSelectedIngre.getModel();
+        recDetailsEditNotIncluModle = (DefaultTableModel) tableRecDetailsNotIncluIngre.getModel();
         txtIngreEditId.setEnabled(false);
         txtIngreEditName.setEnabled(false);
         txtIngreEditCategory.setEnabled(false);
@@ -167,8 +166,6 @@ public class HomeView extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tableRecDetailsNotIncluIngre = new javax.swing.JTable();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         txtRecEditDetailsSearchName = new javax.swing.JTextField();
@@ -181,10 +178,12 @@ public class HomeView extends javax.swing.JFrame {
         tableRecEditDetailsSelectedIngre = new javax.swing.JTable();
         jLabel34 = new javax.swing.JLabel();
         txtRecEditDetailsCate = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnRecEditDetailsSearchAddToList = new javax.swing.JButton();
         btnRecEditDetailsSave = new javax.swing.JButton();
         btnRecEditReset2 = new javax.swing.JButton();
         btnRecEditDetailsCancel = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tableRecDetailsNotIncluIngre = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -442,7 +441,7 @@ public class HomeView extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIngreEditOk)
                     .addComponent(btnIngreEditSetDefult))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         panelRecEdit.addTab("Ingredients", jPanel5);
@@ -502,11 +501,7 @@ public class HomeView extends javax.swing.JFrame {
 
         tableRecSearch.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "RecID", "Name", "Category", "Qty", "Unit"
@@ -569,12 +564,7 @@ public class HomeView extends javax.swing.JFrame {
 
         tableRecIngredients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Ingr ID", "Name", "Category", "Qty", "Unit"
@@ -671,29 +661,28 @@ public class HomeView extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel23)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addComponent(jLabel20)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtRecEditId, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel21)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtRecEditName, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel22)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtRecEditCate, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addGap(704, 704, 704)
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnRecEditOk, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                    .addComponent(radioRecEdit)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(radioRecDelete))))
-                        .addComponent(jScrollPane3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnRecEditOk)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtRecEditId, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRecEditName, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel22)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtRecEditCate, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(704, 704, 704)
+                                .addComponent(radioRecEdit)
+                                .addGap(18, 18, 18)
+                                .addComponent(radioRecDelete)))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -751,13 +740,13 @@ public class HomeView extends javax.swing.JFrame {
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioRecDelete)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(radioRecDelete, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(radioRecEdit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRecEditOk)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelRecEdit.addTab("Recipes", jPanel6);
@@ -782,31 +771,6 @@ public class HomeView extends javax.swing.JFrame {
         btnRecEditDetailsReset1.setText("Reset");
 
         jLabel29.setText("ADD Ingredients");
-
-        tableRecDetailsNotIncluIngre.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Ingre ID", "Name", "Category", "Check"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(tableRecDetailsNotIncluIngre);
 
         jLabel30.setText("Search Ingredients");
 
@@ -853,18 +817,53 @@ public class HomeView extends javax.swing.JFrame {
 
         jLabel34.setText("Category");
 
-        jButton1.setText("Add To List");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRecEditDetailsSearchAddToList.setText("Add To List");
+        btnRecEditDetailsSearchAddToList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRecEditDetailsSearchAddToListActionPerformed(evt);
             }
         });
 
         btnRecEditDetailsSave.setText("Save");
+        btnRecEditDetailsSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecEditDetailsSaveActionPerformed(evt);
+            }
+        });
 
         btnRecEditReset2.setText("Reset");
 
-        btnRecEditDetailsCancel.setText("Cancel");
+        btnRecEditDetailsCancel.setText("Back");
+        btnRecEditDetailsCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecEditDetailsCancelActionPerformed(evt);
+            }
+        });
+
+        tableRecDetailsNotIncluIngre.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "IngreID", "Name", "Category", "Check"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tableRecDetailsNotIncluIngre);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -919,37 +918,32 @@ public class HomeView extends javax.swing.JFrame {
                         .addComponent(jLabel30)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(btnRecEditDetailsSearchClear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRecEditDetailsSearchFind))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtRecEditDetailsSearchName, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel32)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtRecEditDetailsSearchCate, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel33)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 863, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(btnRecEditDetailsCancel)
                         .addGap(18, 18, 18)
                         .addComponent(btnRecEditReset2)
                         .addGap(18, 18, 18)
                         .addComponent(btnRecEditDetailsSave))
-                    .addComponent(jButton1)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                            .addGap(45, 45, 45)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel7Layout.createSequentialGroup()
-                                    .addComponent(btnRecEditDetailsSearchClear)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnRecEditDetailsSearchFind))
-                                .addGroup(jPanel7Layout.createSequentialGroup()
-                                    .addComponent(jLabel31)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtRecEditDetailsSearchName, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel32)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtRecEditDetailsSearchCate, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel33)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
-                                .addComponent(jScrollPane5)))))
-                .addGap(0, 23, Short.MAX_VALUE))
+                    .addComponent(btnRecEditDetailsSearchAddToList, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 863, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -995,15 +989,15 @@ public class HomeView extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRecEditDetailsSearchFind)
                     .addComponent(btnRecEditDetailsSearchClear))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(btnRecEditDetailsSearchAddToList)
                 .addGap(4, 4, 4)
                 .addComponent(jLabel33)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRecEditDetailsSave)
                     .addComponent(btnRecEditReset2)
@@ -1021,7 +1015,9 @@ public class HomeView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRecEdit)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelRecEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -1070,14 +1066,14 @@ public class HomeView extends javax.swing.JFrame {
 
         if (al != null) {
             int rowCount = dtm.getRowCount();
-           // System.out.println("row count +++++++++++"+rowCount);
+            // System.out.println("row count +++++++++++"+rowCount);
             for (int i = 0; i < rowCount; i++) {
                 dtm.removeRow(0);
                 //System.out.println("row count ----"+rowCount);
             }
             for (int i = 0; i < al.size(); i++) {
                 IngredientModle im = al.get(i);
-                String[] array = {im.getIngreID(), im.getIngreName(), im.getIngreCategory()};
+                Object[] array = {im.getIngreID(), im.getIngreName(), im.getIngreCategory(), false};
                 dtm.addRow(array);
             }
             return true;
@@ -1088,7 +1084,7 @@ public class HomeView extends javax.swing.JFrame {
     }
 
     private boolean addResultToRecTable(DefaultTableModel dtm, ArrayList<RecipeModule> al) {
-        
+
         if (al != null) {
 //            int rowCount = dtm.getRowCount();
 //            System.out.println("row count +++++++++++"+rowCount);
@@ -1097,51 +1093,52 @@ public class HomeView extends javax.swing.JFrame {
 //                System.out.println("row count ----"+rowCount);
 //            }
             dtm.setRowCount(0);
-            
 
             for (int i = 0; i < al.size(); i++) {
                 String[] recArray = {al.get(i).getRecID(), al.get(i).getRecName(), al.get(i).getRecCategory(), al.get(i).getRecQty(), al.get(i).getRecUnit()};
                 dtm.addRow(recArray);
-                
-            }
-            return true;
-        }
-        return false;
-    }
-    
-    private boolean addResultToRecIngredientTable(DefaultTableModel dtm, ArrayList<RecIngredientsModle> ingreList){
-        if(ingreList != null){
-            int rowCount = dtm.getRowCount();
-            for(int i = 0; i < rowCount; i++){
-                dtm.removeRow(0);
-            }
-            
-            for(int i=0; i < ingreList.size(); i++){
-                String [] ingreArray= {ingreList.get(i).getIngriID(), ingreList.get(i).getIngreName(), ingreList.get(0).getIngreCategoty(), ingreList.get(i).getIngriQty(), ingreList.get(0).getIngriUnit()};
-                dtm.addRow(ingreArray);
-                
-            }
-            return true;
-        }
-        return false;
-    }
-    
-    private boolean addResultToRecEditDetailsIngreTable(DefaultTableModel dtm, ArrayList<RecIngredientsModle> ingreList){
-        if(ingreList != null){
 
-            int rowCount = dtm.getRowCount();
-            
-            for(int i = 0; i < rowCount; i++){
-                dtm.removeRow(0);
-            }
-            for(int i=0; i< ingreList.size(); i++){
-                System.out.println("ingre list : --"+ingreList.get(i).getIngriID());
-                String ingreArray[] = {ingreList.get(i).getIngriID(), ingreList.get(i).getIngreName(), ingreList.get(i).getIngreCategoty(), ingreList.get(i).getIngriQty(), ingreList.get(i).getIngriUnit(),ingreList.get(i).getIngriPrice()};
-                dtm.addRow(ingreArray);
-                tableRecEditDetailsSelectedIngre.setValueAt(true, i, 6);    
             }
             return true;
-        }else{
+        }
+        return false;
+    }
+
+    private boolean addResultToRecIngredientTable(DefaultTableModel dtm, ArrayList<RecIngredientsModle> ingreList) {
+        if (ingreList != null) {
+            int rowCount = dtm.getRowCount();
+            for (int i = 0; i < rowCount; i++) {
+                dtm.removeRow(0);
+            }
+
+            for (int i = 0; i < ingreList.size(); i++) {
+                String[] ingreArray = {ingreList.get(i).getIngriID(), ingreList.get(i).getIngreName(), ingreList.get(0).getIngreCategoty(), ingreList.get(i).getIngriQty(), ingreList.get(0).getIngriUnit()};
+                dtm.addRow(ingreArray);
+
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private boolean addResultToRecEditDetailsIngreTable(DefaultTableModel dtm, ArrayList<RecIngredientsModle> ingreList, int startRowCount) {
+        if (ingreList != null) {
+
+            if (startRowCount == 0) {
+                int rowCount = dtm.getRowCount();
+                for (int i = 0; i < rowCount; i++) {
+                    dtm.removeRow(0);
+                }
+            }
+
+            for (int i = 0; i < ingreList.size(); i++) {
+                System.out.println("ingre list : --" + ingreList.get(i).getIngriID());
+                String ingreArray[] = {ingreList.get(i).getIngriID(), ingreList.get(i).getIngreName(), ingreList.get(i).getIngreCategoty(), ingreList.get(i).getIngriQty(), ingreList.get(i).getIngriUnit(), ingreList.get(i).getIngriPrice()};
+                dtm.addRow(ingreArray);
+                tableRecEditDetailsSelectedIngre.setValueAt(true, i + startRowCount, 6);
+            }
+            return true;
+        } else {
             return false;
         }
     }
@@ -1189,13 +1186,13 @@ public class HomeView extends javax.swing.JFrame {
         int rowNumber = tableIngreSearch.getSelectedRow();
 //        System.out.println("selected row number 01:::::" + rowNumber);
 //        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            String name = ingreDefTablModle.getValueAt(rowNumber, 1) + "";
-            String cat = ingreDefTablModle.getValueAt(rowNumber, 2) + "";
+        String name = ingreDefTablModle.getValueAt(rowNumber, 1) + "";
+        String cat = ingreDefTablModle.getValueAt(rowNumber, 2) + "";
 //            selectedIngreName = name;
 //            selectedIngreCategory = cat;
-            txtIngreEditId.setText(ingreDefTablModle.getValueAt(rowNumber, 0) + "");
-            txtIngreEditName.setText(name);
-            txtIngreEditCategory.setText(cat);
+        txtIngreEditId.setText(ingreDefTablModle.getValueAt(rowNumber, 0) + "");
+        txtIngreEditName.setText(name);
+        txtIngreEditCategory.setText(cat);
 //            System.out.println("row index 02+++++ "+ rowNumber);
 //            tableIngreSearch.setRowSelectionInterval(rowNumber, rowNumber);
 //            System.out.println("row index 03----- "+ rowNumber);
@@ -1351,24 +1348,22 @@ public class HomeView extends javax.swing.JFrame {
 
     private void btnRepSearchFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepSearchFindActionPerformed
 
-       ArrayList<RecipeModule> al = RecipeController.searchRecipes(txtRepSearchName.getText(), txtRecSearchCate.getText());
+        ArrayList<RecipeModule> al = RecipeController.searchRecipes(txtRepSearchName.getText(), txtRecSearchCate.getText());
         if (addResultToRecTable(recDefaultTableModel, al)) {
- //           if (addResultToRecTable(recIngredientsTableModle, al)) {
+            //           if (addResultToRecTable(recIngredientsTableModle, al)) {
             tableRecSearch.requestFocus();
             tableRecSearch.setRowSelectionInterval(0, 0);
             txtRecEditId.setText(tableRecSearch.getValueAt(0, 0) + "");
             txtRecEditName.setText(tableRecSearch.getValueAt(0, 1) + "");
             txtRecEditCate.setText(tableRecSearch.getValueAt(0, 2) + "");
-            
-            
-            
+
             recIngreList = RecIngredientsController.getRecipeIngredients(txtRecEditId.getText());
 //            if(addResultToRecIngredientTable(recIngredientsTableModle, recIngreList)){
 //        ArrayList<RecIngredientsModle> recIngreList = RecIngredientsController.getRecipeIngredients("REC01");
-            if(addResultToRecIngredientTable(recIngredientsTableModle, recIngreList)){
+            if (addResultToRecIngredientTable(recIngredientsTableModle, recIngreList)) {
                 System.out.println("Completly ADD Ingredients to Table...");
-            }else{
-               // clearJTable(tableRecIngredients);
+            } else {
+                // clearJTable(tableRecIngredients);
                 System.out.println("Empty Data.");
             }
         } else {
@@ -1378,40 +1373,39 @@ public class HomeView extends javax.swing.JFrame {
 
     private void radioRecDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioRecDeleteActionPerformed
         // TODO add your handling code here:
-        if(radioRecDelete.isSelected()){
+        if (radioRecDelete.isSelected()) {
             radioRecEdit.setSelected(false);
         }
     }//GEN-LAST:event_radioRecDeleteActionPerformed
 
     private void radioRecEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioRecEditActionPerformed
         // TODO add your handling code here:
-        if(radioRecEdit.isSelected()){
+        if (radioRecEdit.isSelected()) {
             radioRecDelete.setSelected(false);
         }
     }//GEN-LAST:event_radioRecEditActionPerformed
 
     private void btnRecEditOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecEditOkActionPerformed
         // TODO add your handling code here:
-        if(radioRecEdit.isSelected()){
+        if (radioRecEdit.isSelected()) {
             int seleRow = tableRecSearch.getSelectedRow();
-            txtRecEditDetailsId.setText(tableRecSearch.getValueAt(seleRow, 0)+"");
-            txtRecEditDetailsName.setText(tableRecSearch.getValueAt(seleRow, 1)+"");
-            txtRecEditDetailsQty.setText(tableRecSearch.getValueAt(seleRow, 3)+"");
-            txtRecEditDetailsUnit.setText(tableRecSearch.getValueAt(seleRow, 4)+"");
-            txtRecEditDetailsCate.setText(tableRecSearch.getValueAt(seleRow, 2)+"");
+            txtRecEditDetailsId.setText(tableRecSearch.getValueAt(seleRow, 0) + "");
+            txtRecEditDetailsName.setText(tableRecSearch.getValueAt(seleRow, 1) + "");
+            txtRecEditDetailsQty.setText(tableRecSearch.getValueAt(seleRow, 3) + "");
+            txtRecEditDetailsUnit.setText(tableRecSearch.getValueAt(seleRow, 4) + "");
+            txtRecEditDetailsCate.setText(tableRecSearch.getValueAt(seleRow, 2) + "");
             panelRecEdit.setSelectedIndex(2);
-            
-            
-            if(addResultToRecEditDetailsIngreTable(recDetailsEditIngreModle, recIngreList)){
+
+            if (addResultToRecEditDetailsIngreTable(recDetailsEditIngreModle, recIngreList, 0)) {
                 System.out.println("Add Incuded Ingredienys Successfuly...");
-            }else{
+            } else {
                 clearJTable(tableRecEditDetailsSelectedIngre);
             }
-            
-            ArrayList<IngredientModle> ingreArray = RecIngredientsController.getNotIncludedIngredientsInRec(tableRecSearch.getValueAt(seleRow, 0)+"");
-            if(addResultToIngreTable(recDetailsEditNotIncluModle, ingreArray)){
+
+            ArrayList<IngredientModle> ingreArray = RecIngredientsController.getNotIncludedIngredientsInRec(tableRecSearch.getValueAt(seleRow, 0) + "");
+            if (addResultToIngreTable(recDetailsEditNotIncluModle, ingreArray)) {
                 System.out.println("Add Not Incuded Ingredienys Successfuly...");
-            }else{
+            } else {
                 clearJTable(tableRecDetailsNotIncluIngre);
                 System.out.println("Add Not Incuded Ingredienys Fails...");
             }
@@ -1450,34 +1444,55 @@ public class HomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRecCreateClearActionPerformed
 
     private void tableRecSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableRecSearchKeyReleased
-        try{
+        try {
+            clearJTable(tableRecIngredients);
             System.out.println(tableRecSearch.getSelectedRow());
-        int selectedRow = tableRecSearch.getSelectedRow();
+            int selectedRow = tableRecSearch.getSelectedRow();
 ////        System.out.println("0000000000 :" +selectedRow);
 ////        System.out.println("row count ================="+tableRecSearch.getRowCount());
-        txtRecEditId.setText(tableRecSearch.getValueAt(selectedRow, 0) + "");
+            txtRecEditId.setText(tableRecSearch.getValueAt(selectedRow, 0) + "");
 //        System.out.println("111111111");
             txtRecEditName.setText(tableRecSearch.getValueAt(selectedRow, 1) + "");
             txtRecEditCate.setText(tableRecSearch.getValueAt(selectedRow, 2) + "");
 //            System.out.println("0, 1, 2 :-"+tableRecSearch.getValueAt(selectedRow, 0) + "  "+tableRecSearch.getValueAt(selectedRow, 2) + "");
 //            System.out.println("txtRecEditId.getText() " + txtRecEditId.getText());
+            //recIngreList.clear();
             recIngreList = RecIngredientsController.getRecipeIngredients(txtRecEditId.getText());
-            if(addResultToRecIngredientTable(recIngredientsTableModle, recIngreList)){
-                System.out.println(""
-                        + "Completly ADD Ingredients to Table...");
-            }else{
-                clearJTable(tableRecIngredients);
+//            clearJTable(tableRecIngredients);
+            
+            if (recIngreList != null) {
+                System.out.println("+++++++++++++++++++");
                 
-                System.out.println("Empty Data.");
+                System.out.println("--------------- 01");
+                if (addResultToRecIngredientTable(recIngredientsTableModle, recIngreList)) {
+                    System.out.println(""
+                            + "Completly ADD Ingredients to Table...");
+                    System.out.println("--------------- 02");
+                } else {
+                    System.out.println("--------------- 03");
+                    recIngreList.clear();
+                    clearJTable(tableRecIngredients);
+                    DefaultTableModel dtm = recIngredientsTableModle;
+                            dtm.setRowCount(0);
+                    System.out.println("Empty Data.");
+                }
+
+            }else {
+                System.out.println("--------------- 04");
+                //recIngreList.clear();
+                DefaultTableModel dtm = recIngredientsTableModle;
+                            dtm.setRowCount(0);
+                //clearJTable(tableRecIngredients);
             }
-        }catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println("Exception :++++" + e);
         }
     }//GEN-LAST:event_tableRecSearchKeyReleased
 
     private void tableRecSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableRecSearchMouseClicked
         // TODO add your handling code here:
-        
+
         System.out.println(tableRecSearch.getSelectedRow());
     }//GEN-LAST:event_tableRecSearchMouseClicked
 
@@ -1485,16 +1500,66 @@ public class HomeView extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println(tableRecIngredients.getSelectedRow());
     }//GEN-LAST:event_tableRecIngredientsKeyPressed
+///.....................................................................
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    private void btnRecEditDetailsSearchAddToListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecEditDetailsSearchAddToListActionPerformed
+
+        ArrayList<RecIngredientsModle> selectedIngreList = getSelectedDataFromTable(tableRecDetailsNotIncluIngre);
+        int startRowCount = tableRecEditDetailsSelectedIngre.getRowCount();
+        if (addResultToRecEditDetailsIngreTable(recDetailsEditIngreModle, selectedIngreList, startRowCount)) {
+            System.out.println("Add Incuded Ingredienys Successfuly...");
+        }
+    }//GEN-LAST:event_btnRecEditDetailsSearchAddToListActionPerformed
+
+    private void btnRecEditDetailsSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecEditDetailsSaveActionPerformed
+        //
+        ///''''''''''''''''''''''''' 
+        ArrayList<RecIngredientsModle> saveIngreList = getSelectedDataFromTable(tableRecEditDetailsSelectedIngre);
+        boolean result = RecIngredientsController.updateRecIngreDetails(saveIngreList, txtRecEditDetailsId.getText());
+        System.out.println("final result:" + result);
+    }//GEN-LAST:event_btnRecEditDetailsSaveActionPerformed
+
+    private void btnRecEditDetailsCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecEditDetailsCancelActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRecEditDetailsCancelActionPerformed
 
-    private ArrayList<RecIngredientsModle> getSelectedDataFromTable (JTable table) {
-        
-        return null;
+    private ArrayList<RecIngredientsModle> getSelectedDataFromTable(JTable table) {
+        ArrayList<RecIngredientsModle> list = new ArrayList<>();
+        RecIngredientsModle mod = new RecIngredientsModle();
+        for (int i = 0; i < table.getRowCount(); i++) {
+
+            if (table.equals(tableRecDetailsNotIncluIngre)) {
+                System.out.println("true : tableRecDetailsNotIncluIngre");
+
+                String boolValue = table.getValueAt(i, 3).toString();
+
+                if ("true".equals(boolValue)) {
+                    mod.setIngriID(table.getValueAt(i, 0).toString());
+                    mod.setIngreName(table.getValueAt(i, 1).toString());
+                    mod.setIngreCategoty(table.getValueAt(i, 2).toString());
+                    list.add(mod);
+                    ((DefaultTableModel) table.getModel()).removeRow(i);
+                }
+            } else if (table.equals(tableRecEditDetailsSelectedIngre)) {
+                System.out.println("true: tableRecDetailsIncluIngre");
+                String boolValue = table.getValueAt(i, 6).toString();
+                System.out.println("+++++++++++++++++++" + table.getValueAt(i, 5).toString());
+                if ("true".equals(boolValue)) {
+                    mod.setIngriID(table.getValueAt(i, 0).toString());
+                    mod.setIngreName(table.getValueAt(i, 1).toString());
+                    mod.setIngreCategoty(table.getValueAt(i, 2).toString());
+                    System.out.println("+++++++++++++++++++" + table.getValueAt(i, 4).toString());
+                    mod.setIngriQty(table.getValueAt(i, 3).toString());
+                    mod.setIngriUnit(table.getValueAt(i, 4).toString());
+                    mod.setIngriPrice(table.getValueAt(i, 5).toString());
+                    list.add(mod);
+                }
+            }
+        }
+        return list;
     }
+
     // clear the jtable content
     private void clearJTable(final JTable table) {
         for (int i = 0; i < table.getRowCount(); i++) {
@@ -1574,6 +1639,7 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JButton btnRecEditDetailsOk;
     private javax.swing.JButton btnRecEditDetailsReset1;
     private javax.swing.JButton btnRecEditDetailsSave;
+    private javax.swing.JButton btnRecEditDetailsSearchAddToList;
     private javax.swing.JButton btnRecEditDetailsSearchClear;
     private javax.swing.JButton btnRecEditDetailsSearchFind;
     private javax.swing.JButton btnRecEditOk;
@@ -1587,7 +1653,6 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JComboBox comboRecCreateUnit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1628,8 +1693,8 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
